@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive AI Portfolio Navbar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+
+    <style>
+:root {
+    --raw-seinna: hsl(24, 74%, 58%);
+    --sizzling-sunrise: hsl(51, 95%, 54%);
+    --scarlet: hsl(13, 96%, 47%);
+    --black: hsl(0, 0%, 0%);
+    --white: hsl(0, 0%, 100%);
+
+    --ff-saira-stencil-one: "Saira Stencil One", sans-serif; 
+    --ff-poppins: 'Poppins', sans-serif;
+    --ff-roboto: 'Roboto', sans-serif;
+}
+html {
+    box-sizing: border-box;
+    --duration: .45s;
+    --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+    --color-1: #ffffff; /* Light mode text color */
+    --color-2: #000; /* Dark mode text color */
+    --bg-color-light: #0C1A1A; /* Light mode background color */
+    --bg-color-dark: #5f71ac; /* Dark mode background color */
+  
+    --item-bg-color-dark: rgba(56, 0, 240, 0.4); /* Dark mode item background color */
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+body {
+    margin: 0;
+    /* height: 100vh; */
+    display: flex;
+    /* overflow: hidden; */
+    align-items: top;
+    justify-content: left;
+    background: linear-gradient(to left, #0C1A1A, #6ACFC7);
+    font-family: 'Dosis', sans-serif;
+    transition: background-color var(--duration) var(--cubic);
+}
+.menu {
+    width: 44em; /*Increased width to accommodate more items */
+    display: flex ;
+    height: 8em; /* Increased height for better text fit */
+    user-select: none;
+    position: relative;
+    align-items: center;
+    padding: 0 1.9em;
+    justify-content: top;
+    background: var(--item-bg-color-light);
+    padding-left:50px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: background-color var(--duration) var(--cubic);
+}
+@media (max-width: 42.625em) {
+    .menu {
+        font-size: .55em;
+        width: 100%; /* Responsive width */
+    }
+}
+.menu__item {
+    all: unset;
+    flex-grow: 1;
+    display: flex;
+    cursor:pointer;
+    overflow: hidden;
+    padding-top: 0.5em;
+    position: relative;
+    align-items: right;
+    color: var(--color-1);
+    justify-content: center;
+    transition: flex-grow var(--duration) var(--cubic), color var(--duration) var(--cubic);
+}
+.menu__icon {
+    font-size: 1.5em;
+    stroke: currentColor;
+    transition: transform var(--duration) var(--cubic);
+}
+.menu__text {
+    left: 3.5em;
+    height: 1.5em;
+    font-size: 1.5em;
+    position: absolute;
+    text-transform: capitalize;
+    letter-spacing: .01em;
+    transform: translate3d(0, 109%, 0);
+    transition: transform calc( var(--duration) / 3.7 );
+}
+.menu__item.active {
+    flex-grow: 2.3;
+    color: var(--color-2);
+}
+.menu__item.active .menu__icon {
+    transform: translate3d(-95% , 0, 0);
+}
+.menu__item.active::after {
+    transform: translate3d(6.3em , 0, 0) scaleX(1);
+    transition: transform var(--duration) var(--cubic);
+}
+.menu__text.active {
+    transform: translate3d(0 , 0, 0);
+    transition: transform calc(var(--duration) / 1.5);
+}
+.containers {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  /* Spaces children (logo and menu) across the full width */
+    background-color: transparent;
+    padding: 0 20px;  /* Padding on both sides for spacing */
+    width: 100%;  /* Ensures the container spans the full width */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.logo {
+    font-size: 2em;  /* Larger font size for better visibility */
+    font-family: var(--ff-saira-stencil-one);  /* Saira Stencil One font */ /* Color for the logo */
+    margin-right: 30px;  /* Right margin for spacing between logo and menu items */
+
+}
+
+
+.logo a {
+    text-decoration: none;  /* Removes underline from the link */
+    color: var(--raw-seinna);  /* Ensures the logo text uses the defined color without relying on parent */
+    font-family: var(--ff-saira-stencil-one);  /* Explicitly sets the font for the logo link */
+}
+
+
+.logo span {
+  display: inline-block;
+  color: var(--raw-seinna);
+  margin-left: 2px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="containers">
+        <h1 class="logo">
+            <a href="/">Prashanta<span>.</span></a>
+        </h1>
+        <menu class="menu">
+            <a class="menu__item active" href="/">
+                <div class="menu__icon"><i class="fa-solid fa-house"></i></div>
+                <strong class="menu__text active">Home</strong>
+            </a>
+            <a class="menu__item" href="/profile">
+                <div class="menu__icon"><i class="fa-solid fa-user"></i></div>
+                <strong class="menu__text">Profile</strong>
+            </a>
+            <a class="menu__item" href="/portfolio">
+                <div class="menu__icon"><i class="fa-solid fa-briefcase"></i></div>
+                <strong class="menu__text">Portfolio</strong>
+            </a>
+            <a class="menu__item" href="/contact">
+                <div class="menu__icon"><i class="fa-solid fa-envelope"></i></div>
+                <strong class="menu__text">Contact</strong>
+            </a>
+            <a class="menu__item" href="/services">
+                <div class="menu__icon"><i class="fa-solid fa-gears"></i></div>
+                <strong class="menu__text">Services</strong>
+            </a>
+            <a class="menu__item" href="/blog">
+                <div class="menu__icon"><i class="fa-solid fa-newspaper"></i></div>
+                <strong class="menu__text">Blog</strong>
+            </a>
+        </menu>
+    </div>
+    
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+    const currentLocation = window.location.pathname; // Gets the current page's path
+    const menuItems = document.querySelectorAll(".menu__item"); // Selects all menu items
+
+    // Function to remove active classes
+    function removeActiveClasses() {
+        menuItems.forEach(subItem => {
+            subItem.classList.remove("active");
+            subItem.querySelector(".menu__text").classList.remove("active");
+        });
+    }
+
+    // Function to set active class based on current location
+    function setActiveClass() {
+        menuItems.forEach(item => {
+            if (item.getAttribute('href') === currentLocation || (currentLocation === "/" && item.getAttribute('href') === "/home")) {
+                item.classList.add("active");
+                item.querySelector(".menu__text").classList.add("active");
+            }
+        });
+    }
+
+    // Initially set the correct active class
+    setActiveClass();
+
+    menuItems.forEach(item => {
+        item.addEventListener("mouseenter", function() {
+            removeActiveClasses(); // First remove all active classes
+            this.classList.add("active"); // Then add 'active' to the currently hovered item
+            this.querySelector(".menu__text").classList.add("active");
+        });
+
+        item.addEventListener("mouseleave", function() {
+            removeActiveClasses(); // Remove all active classes when mouse leaves
+            setActiveClass(); // Reapply active class based on URL
+        });
+    });
+});
+
+
+    </script>
+</body>
+</html>
